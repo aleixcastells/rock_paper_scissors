@@ -9,10 +9,12 @@ class Player {
     constructor(number) {
         this.number = number;
         this.weapon = ''
-        this.colour = '';
+        this.colour = selectColor(number);
         this.points = 0;
     }
 }
+
+document.body.style.backgroundColor = "black";
 
 function btnClick(button_info, number_info = '!') {
 
@@ -37,6 +39,7 @@ function btnClick(button_info, number_info = '!') {
             screenManager('rounds_screen', 'hide')
             screenManager('selection_screen', 'show')
             document.getElementById('player_name').innerText = 'Player ' + PLAYERS[current_round_weapons.length].number
+            document.body.style.backgroundColor = PLAYERS[current_round_weapons.length].colour
             break;
 
         case 'rock':
@@ -45,10 +48,14 @@ function btnClick(button_info, number_info = '!') {
         case 'random':
 
             document.getElementById('player_name').innerText = 'Player ' + (PLAYERS[current_round_weapons.length].number + 1)
+
             if (current_round_weapons.length >= PLAYERS.length) { return }
+
             if (current_round_weapons.length >= PLAYERS.length - 1) {
                 screenManager('selection_screen', 'hide')
+                document.body.style.backgroundColor = "black";
                 screenManager('go_screen', 'show')
+
             }
             if (button_info == 'random') {
                 PLAYERS[current_round_weapons.length].weapon = 'paper'
@@ -60,6 +67,9 @@ function btnClick(button_info, number_info = '!') {
             }
             if (current_round == rounds_amount) {
                 screenManager('next_round', 'hide')
+            }
+            if (current_round_weapons.length != PLAYERS.length) {
+                document.body.style.backgroundColor = PLAYERS[current_round_weapons.length].colour
             }
 
             break;
@@ -101,6 +111,7 @@ function btnClick(button_info, number_info = '!') {
             screenManager('selection_screen', 'show')
             screenManager('results_screen', 'hide')
             document.getElementById('player_name').innerText = 'Player 1'
+            document.body.style.backgroundColor = PLAYERS[current_round_weapons.length].colour
             break;
     }
 }
@@ -137,7 +148,6 @@ function scoreboardUpdate() {
     for (let i = 0; i < PLAYERS.length; i++) {
         SCOREBOARD[i] = PLAYERS[i].points
     }
-
 }
 
 function screenManager(screen, action) {
@@ -152,10 +162,34 @@ function screenManager(screen, action) {
 
 function showWinners() {
 
-    let highest = Math.max(...SCOREBOARD);
+    let highest = Math.max(...SCOREBOARD)
+    let scoreboard = ''
+    let winner_list = ''
+
     for (let i = 0; i < PLAYERS.length; i++) {
         if (PLAYERS[i].points == highest) {
-            console.log('Player ' + PLAYERS[i].number)
+            winner_list += '<span class=\"player' + PLAYERS[i].number + '\"> Player ' + PLAYERS[i].number + '</span><br>'
         }
+    }
+    for (let i = 0; i < PLAYERS.length; i++) {
+        scoreboard += 'Player ' + PLAYERS[i].number + ' (' + PLAYERS[i].weapon + ') ' + PLAYERS[i].points + '\n'
+    }
+
+    document.getElementById('scoreboard').innerText = scoreboard
+    document.getElementById('winner_list').innerHTML = winner_list
+}
+
+function selectColor(n) {
+    switch (n) {
+        case 0: return
+        case 1: return 'rgb(255, 230, 0)'
+        case 2: return 'rgb(255, 77, 0)'
+        case 3: return 'rgb(245, 103, 181)'
+        case 4: return 'rgb(0, 236, 63)'
+        case 5: return 'rgb(11, 209, 173)'
+        case 6: return 'rgb(11, 100, 209)'
+        case 7: return 'rgb(236, 0, 110)'
+        case 8: return 'rgb(232, 44, 44)'
+        case 9: return 'rgb(126, 227, 48)'
     }
 }

@@ -1,23 +1,24 @@
-.container {
-  text-align: center;
+/* GENERAL STYLE */
+html {
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
-.container-title {
-  padding: 5px;
-  text-align: center;
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* background-color: black !important;
+
+  background-color: rgb(232, 44, 44) !important;*/
 }
 
-.navbar {
-  display: block !important;
+.row {
+  --bs-gutter-x: 0 !important;
 }
 
-.btn {
-  margin-left: -2px;
-  margin-right: -2px;
-  width: 70px;
-  height: 70px;
-}
-
+/* HIDE / SHOW FUNCTIONALITY */
 .show {
   display: block;
 }
@@ -26,109 +27,158 @@
   display: none;
 }
 
-.players_screen {
-  margin-top: 15%
+
+
+
+
+/* CLASSES */
+.container {
+  position: relative;
+  padding-top: 10vh !important;
+  font-family: 'Helvetica', sans-serif;
+  text-align: center;
+  width: 100% !important;
+  height: 100%;
+
+  color: white;
+
 }
 
-.players_screen .btn {
-  background-color: rgb(49, 98, 176);
-  border-radius: 0;
-  border: 0;
+.header {
+  position: relative;
+  font-weight: 200;
+  font-size: 1.4em;
 }
 
-.players_screen .btn:hover {
-  background-color: rgb(96, 157, 255);
+.clickable {
+  background-color: transparent;
+  color: white;
 }
 
-.rounds_screen {
-  margin-top: 20%
+@media(hover: hover) {
+  .clickable:hover {
+    background-color: white;
+    color: black;
+
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 36px;
+  }
 }
 
-.rounds_screen .btn {
-  border-radius: 0;
-  background-color: rgb(49, 98, 176);
-  border: 0;
+
+.btn_div {
+  padding: 20px 35px;
+
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: -.02em;
+  display: inline-block;
+  max-width: 280px;
+
+  background-color: transparent;
+  color: white;
 }
 
-.rounds_screen .btn:hover {
-  background-color: rgb(96, 157, 255);
-}
 
-.selection_screen {
-  margin-top: 10%;
-  font-size: 0;
+@media(hover: hover) {
+  .btn_div:hover {
+    background-color: white;
+    color: black;
+  }
 }
 
 .selection_btn {
-  width: 150px;
-  height: 150px;
-  background-color: rgb(49, 98, 176);
-  display: inline-block;
-  text-align: center;
-  line-height: 130px;
-  margin: 0px;
-  border-radius: 0;
-  border: 0;
-  opacity: 1;
-}
-
-.selection_btn:hover {
-  opacity: .9;
-
-}
-
-.rock {
-  background-image: url(/rock_paper_scissors/img/rock.jpg);
-  background-size: cover;
-}
-
-.paper {
-  background-image: url(/rock_paper_scissors/img/paper.jpg);
-  background-size: cover;
-}
-
-.scissors {
-  background-image: url(/rock_paper_scissors/img/scissors.jpg);
-  background-size: cover;
-}
-
-.random {
-  background-image: url(/rock_paper_scissors/img/random.jpg);
-  background-size: cover;
-}
-
-.results_screen .btn {
-
-  width: 200px;
-  height: 50px;
-  background-color: rgb(49, 98, 176);
-  border-radius: 0;
-  border: 0;
-}
-
-.results_screen .btn:hover {
-  background-color: rgb(96, 157, 255);
+  background-size: 6em;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 18vh;
+  width: 100%;
 }
 
 .go_screen {
-  position: relative;
+  padding-top: 30vh;
 }
 
+.winner_names {
+  font-size: 3em;
+  font-weight: bold;
+}
 
-.go_screen .btn {
-
-  width: 300px;
-  height: 300px;
-  border-radius: 0;
-  background-color: rgb(49, 98, 176);
-  border: 0;
-
-
-
-
+/* IMG BACKGROUNDS */
+.rock {
+  background-image: url(../img/rock.png);
 
 }
 
-.go_screen .btn:hover {
-  background-color: rgb(96, 157, 255);
+@media(hover: hover) {
+  .rock:hover {
+    background-image: url(../img/rock_t.png);
+    background-color: transparent;
+
+  }
+
+}
+
+
+.paper {
+  background-image: url(../img/paper.png);
+}
+
+@media(hover: hover) {
+  .paper:hover {
+    background-image: url(../img/paper_t.png);
+    background-color: transparent;
+
+  }
+
+}
+
+.scissors {
+  background-image: url(../img/scissors.png);
+}
+
+@media(hover: hover) {
+  .scissors:hover {
+    background-image: url(../img/scissors_t.png);
+    background-color: transparent;
+  }
+}
+
+
+.player1 {
+  color: rgb(255, 230, 0);
+}
+
+.player2 {
+  color: rgb(255, 77, 0);
+}
+
+.player3 {
+  color: rgb(245, 103, 181);
+}
+
+.player4 {
+  color: rgb(0, 236, 63);
+}
+
+.player5 {
+  color: rgb(11, 209, 173);
+}
+
+.player6 {
+  color: rgb(11, 100, 209);
+}
+
+.player7 {
+  color: rgb(236, 0, 110);
+}
+
+.player8 {
+  color: rgb(232, 44, 44);
+}
+
+.player9 {
+  color: rgb(126, 227, 48);
 }

@@ -7,7 +7,7 @@
     <meta name="author" content="Aleix Castells" />
 
     <!-- Page Title-->
-    <title>New project</title>
+    <title>Rock Paper Scissors</title>
 
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="http://www.aleixcastells.cat/img/logo.png">
@@ -15,72 +15,90 @@
     <link href="css/rps.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body class="bootstrap-dark">
 
-
-
     <!-- Page content-->
+
+
     <div class="container">
-        <br>
 
-        <div id="players_screen" class="show players_screen">
+        <div class="row">
+            <div class="col-sm"></div>
 
-            <h2>How many players</h2> <br>
+            <div class="col-sm">
+                <div id="players_screen" class="show players_screen">
 
-            <button id="btn1" class="btn btn-primary" onclick="btnClick('players',1)">1</button>
-            <button id="btn2" class="btn btn-primary" onclick="btnClick('players',2)">2</button>
-            <button id="btn3" class="btn btn-primary" onclick="btnClick('players',3)">3</button> <br>
-            <button id="btn4" class="btn btn-primary" onclick="btnClick('players',4)">4</button>
-            <button id="btn5" class="btn btn-primary" onclick="btnClick('players',5)">5</button>
-            <button id="btn6" class="btn btn-primary" onclick="btnClick('players',6)">6</button> <br>
-            <button id="btn7" class="btn btn-primary" onclick="btnClick('players',7)">7</button>
-            <button id="btn8" class="btn btn-primary" onclick="btnClick('players',8)">8</button>
-            <button id="btn9" class="btn btn-primary" onclick="btnClick('players',9)">9</button>
-        </div>
-        <br>
+                    <br> <br><br> <br>
 
-        <div id="rounds_screen" class="hide rounds_screen">
-            <h2>How many rounds?</h2> <br>
+                    <span class="header">How many players?</span> <br> <br>
 
-            <button id="btn10" class="btn btn-primary" onclick="btnClick('rounds',1)">1</button>
-            <button id="btn11" class="btn btn-primary" onclick="btnClick('rounds',3)">3</button>
-            <button id="btn12" class="btn btn-primary" onclick="btnClick('rounds',5)">5</button> <br>
-        </div>
-        <br>
+                    <div class="btn_div" onclick="btnClick('players',1)"> 1</div>
+                    <div class="btn_div" onclick="btnClick('players',2)"> 2</div>
+                    <div class="btn_div" onclick="btnClick('players',3)"> 3</div><br>
+                    <div class="btn_div" onclick="btnClick('players',4)"> 4</div>
+                    <div class="btn_div" onclick="btnClick('players',5)"> 5</div>
+                    <div class="btn_div" onclick="btnClick('players',6)"> 6</div><br>
+                    <div class="btn_div" onclick="btnClick('players',7)"> 7</div>
+                    <div class="btn_div" onclick="btnClick('players',8)"> 8</div>
+                    <div class="btn_div" onclick="btnClick('players',9)"> 9</div>
+                </div>
 
-        <div id="selection_screen" class="hide selection_screen">
-            <h2>Select your weapon</h2>
-            <h6 id="player_name">Player</h6>
-            <div id="btn14" class="selection_btn rock" onclick="btnClick('rock')">ROCK</div>
-            <div id="btn15" class="selection_btn paper" onclick="btnClick('paper')">PAPR</div><br>
-            <div id="btn16" class="selection_btn scissors" onclick="btnClick('scissors')">SCSS</div>
-            <div id="btn17" class="selection_btn random" onclick="btnClick('random')">RANDOM</div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+                <div id="rounds_screen" class="hide rounds_screen">
+                    <br> <br><br> <br>
+                    <span class="header">How many rounds?</span> <br><br>
 
-        <div id="go_screen" class="hide go_screen">
-            <button id="btn18" class="btn btn-primary" onclick="btnClick('go')">GO</button>
-        </div>
-        <br>
+                    <div id="btn10" class="btn_div" onclick="btnClick('rounds',1)"><span class="btn_text">One Round
+                        </span></div> <br>
+                    <div id="btn11" class="btn_div" onclick="btnClick('rounds',3)"><span class="btn_text">Three Rounds
+                        </span></div> <br>
+                    <div id="btn12" class="btn_div" onclick="btnClick('rounds',5)"><span class="btn_text">Five Rounds
+                        </span></div>
+                </div>
 
-        <div id="results_screen" class="hide results_screen">
-            <h2>Results</h2>
+                <div id="selection_screen" class="hide selection_screen">
+                    <span id="player_name" class="header"> <span class="header_text">Player</span> </span> <br><br>
+                    <div id="btn14" class="btn_div selection_btn rock" onclick="btnClick('rock')"></div><br>
+                    <div id="btn15" class="btn_div selection_btn paper" onclick="btnClick('paper')"></div><br>
+                    <div id="btn16" class="btn_div selection_btn scissors" onclick="btnClick('scissors')"></div>
+                    <br><br>
+                    <br>
+                    <div id="btn17" class="clickable header selection_btn random" onclick="btnClick('random')">random
+                    </div>
+                </div>
 
-            <div id="winner_list"></div> <br>
-            <span>Looser</span> <br><br><br>
+                <div id="go_screen" class="hide go_screen">
+                    <div id="btn18" class="btn_div" onclick="btnClick('go')">GO</div>
+                </div>
 
-            <div id="next_round" class="show next_round">
-                <button id="btn16" class="btn btn-primary" onclick="btnClick('next_round')">Next Round</button>
+                <div id="results_screen" class="hide results_screen">
+                    <span class="header">Winners:</span> <br><br>
+                    <span id="winner_list" class="winner_names"></span> <br><br>
+                    <span class="header">Scoreboard:</span> <br><br>
+                    <span id="scoreboard"></span>
+                    <br><br>
+                    <div id="next_round" class="show next_round">
+                        <div id="btn16" class="clickable header" onclick="btnClick('next_round')">Next Round</div>
+                    </div>
+                    <div id="btn17" class="clickable header" onclick="btnClick('replay')">Replay</div>
+                    <br>
+                    <br>
+                </div>
             </div>
-            <button id="btn17" class="btn btn-primary" onclick="btnClick('replay')">Replay</button>
+
+            <div class="col-sm"></div>
         </div>
+
+
+
+
 
     </div>
 
