@@ -1,0 +1,134 @@
+.container {
+  text-align: center;
+}
+
+.container-title {
+  padding: 5px;
+  text-align: center;
+}
+
+.navbar {
+  display: block !important;
+}
+
+.btn {
+  margin-left: -2px;
+  margin-right: -2px;
+  width: 70px;
+  height: 70px;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.players_screen {
+  margin-top: 15%
+}
+
+.players_screen .btn {
+  background-color: rgb(49, 98, 176);
+  border-radius: 0;
+  border: 0;
+}
+
+.players_screen .btn:hover {
+  background-color: rgb(96, 157, 255);
+}
+
+.rounds_screen {
+  margin-top: 20%
+}
+
+.rounds_screen .btn {
+  border-radius: 0;
+  background-color: rgb(49, 98, 176);
+  border: 0;
+}
+
+.rounds_screen .btn:hover {
+  background-color: rgb(96, 157, 255);
+}
+
+.selection_screen {
+  margin-top: 10%;
+  font-size: 0;
+}
+
+.selection_btn {
+  width: 150px;
+  height: 150px;
+  background-color: rgb(49, 98, 176);
+  display: inline-block;
+  text-align: center;
+  line-height: 130px;
+  margin: 0px;
+  border-radius: 0;
+  border: 0;
+  opacity: 1;
+}
+
+.selection_btn:hover {
+  opacity: .9;
+
+}
+
+.rock {
+  background-image: url(/rock_paper_scissors/img/rock.jpg);
+  background-size: cover;
+}
+
+.paper {
+  background-image: url(/rock_paper_scissors/img/paper.jpg);
+  background-size: cover;
+}
+
+.scissors {
+  background-image: url(/rock_paper_scissors/img/scissors.jpg);
+  background-size: cover;
+}
+
+.random {
+  background-image: url(/rock_paper_scissors/img/random.jpg);
+  background-size: cover;
+}
+
+.results_screen .btn {
+
+  width: 200px;
+  height: 50px;
+  background-color: rgb(49, 98, 176);
+  border-radius: 0;
+  border: 0;
+}
+
+.results_screen .btn:hover {
+  background-color: rgb(96, 157, 255);
+}
+
+.go_screen {
+  position: relative;
+}
+
+
+.go_screen .btn {
+
+  width: 300px;
+  height: 300px;
+  border-radius: 0;
+  background-color: rgb(49, 98, 176);
+  border: 0;
+
+
+
+
+
+}
+
+.go_screen .btn:hover {
+  background-color: rgb(96, 157, 255);
+}

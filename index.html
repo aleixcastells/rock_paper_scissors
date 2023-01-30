@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="author" content="Aleix Castells" />
+
+    <!-- Page Title-->
+    <title>New project</title>
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="http://www.aleixcastells.cat/img/logo.png">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/rps.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+
+</head>
+
+<body class="bootstrap-dark">
+
+
+
+    <!-- Page content-->
+    <div class="container">
+        <br>
+
+        <div id="players_screen" class="show players_screen">
+
+            <h2>How many players</h2> <br>
+
+            <button id="btn1" class="btn btn-primary" onclick="btnClick('players',1)">1</button>
+            <button id="btn2" class="btn btn-primary" onclick="btnClick('players',2)">2</button>
+            <button id="btn3" class="btn btn-primary" onclick="btnClick('players',3)">3</button> <br>
+            <button id="btn4" class="btn btn-primary" onclick="btnClick('players',4)">4</button>
+            <button id="btn5" class="btn btn-primary" onclick="btnClick('players',5)">5</button>
+            <button id="btn6" class="btn btn-primary" onclick="btnClick('players',6)">6</button> <br>
+            <button id="btn7" class="btn btn-primary" onclick="btnClick('players',7)">7</button>
+            <button id="btn8" class="btn btn-primary" onclick="btnClick('players',8)">8</button>
+            <button id="btn9" class="btn btn-primary" onclick="btnClick('players',9)">9</button>
+        </div>
+        <br>
+
+        <div id="rounds_screen" class="hide rounds_screen">
+            <h2>How many rounds?</h2> <br>
+
+            <button id="btn10" class="btn btn-primary" onclick="btnClick('rounds',1)">1</button>
+            <button id="btn11" class="btn btn-primary" onclick="btnClick('rounds',3)">3</button>
+            <button id="btn12" class="btn btn-primary" onclick="btnClick('rounds',5)">5</button> <br>
+        </div>
+        <br>
+
+        <div id="selection_screen" class="hide selection_screen">
+            <h2>Select your weapon</h2>
+            <h6 id="player_name">Player</h6>
+            <div id="btn14" class="selection_btn rock" onclick="btnClick('rock')">ROCK</div>
+            <div id="btn15" class="selection_btn paper" onclick="btnClick('paper')">PAPR</div><br>
+            <div id="btn16" class="selection_btn scissors" onclick="btnClick('scissors')">SCSS</div>
+            <div id="btn17" class="selection_btn random" onclick="btnClick('random')">RANDOM</div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div id="go_screen" class="hide go_screen">
+            <button id="btn18" class="btn btn-primary" onclick="btnClick('go')">GO</button>
+        </div>
+        <br>
+
+        <div id="results_screen" class="hide results_screen">
+            <h2>Results</h2>
+
+            <div id="winner_list"></div> <br>
+            <span>Looser</span> <br><br><br>
+
+            <div id="next_round" class="show next_round">
+                <button id="btn16" class="btn btn-primary" onclick="btnClick('next_round')">Next Round</button>
+            </div>
+            <button id="btn17" class="btn btn-primary" onclick="btnClick('replay')">Replay</button>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
