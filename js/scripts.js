@@ -98,6 +98,7 @@ function btnClick(button_info, number_info = '!') {
             document.getElementById('player_name').innerText = 'Player 1'
             screenManager('players_screen', 'show')
             screenManager('results_screen', 'hide')
+            screenManager('next_round', 'show')
             break;
 
         case 'next_round':
