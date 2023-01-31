@@ -1,4 +1,5 @@
 const PLAYERS = []
+const PLAYER_COLOURS = ['rgb(255, 230, 0)', 'rgb(255, 77, 0)', 'rgb(245, 103, 181)', 'rgb(0, 236, 63)', 'rgb(11, 209, 173)', 'rgb(11, 100, 209)', 'rgb(236, 0, 110)', 'rgb(232, 44, 44)', 'rgb(126, 227, 48)']
 const SCOREBOARD = []
 var rounds_amount = 0
 var current_round = 1
@@ -6,10 +7,10 @@ var current_round = 1
 var current_round_weapons = []
 
 class Player {
-    constructor(number) {
-        this.number = number;
+    constructor(player_number) {
+        this.number = player_number;
         this.weapon = ''
-        this.colour = selectColor(number);
+        this.colour = selectColor(player_number);
         this.points = 0;
     }
 }
@@ -23,96 +24,37 @@ function btnClick(button_info, number_info = '!') {
     switch (button_info) {
 
         case 'players':
-
             if (PLAYERS.length != 0) { return }
-            for (let i = 0; i < number_info; i++) {
-                createPlayers(i + 1)
-            }
-            screenManager('players_screen', 'hide')
-            screenManager('rounds_screen', 'show')
+            for (let i = 0; i < number_info; i++) { createPlayers(i + 1) }
+            flipScreenVisibility('rounds_screen', 'players_screen')
             break;
 
         case 'rounds':
-
             if (rounds_amount != 0) { return }
             rounds_amount = number_info
-            screenManager('rounds_screen', 'hide')
-            screenManager('selection_screen', 'show')
             document.getElementById('player_name').innerText = 'Player ' + PLAYERS[current_round_weapons.length].number
             document.body.style.backgroundColor = PLAYERS[current_round_weapons.length].colour
+
+            flipScreenVisibility('selection_screen', 'rounds_screen')
             break;
 
         case 'rock':
         case 'paper':
         case 'scissors':
-        case 'random':
 
             document.getElementById('player_name').innerText = 'Player ' + (PLAYERS[current_round_weapons.length].number + 1)
 
             if (current_round_weapons.length >= PLAYERS.length) { return }
-
             if (current_round_weapons.length >= PLAYERS.length - 1) {
-                screenManager('selection_screen', 'hide')
+                flipScreenVisibility('go_screen', 'selection_screen')
                 document.body.style.backgroundColor = "black";
-                screenManager('go_screen', 'show')
-
-            }
-            if (button_info == 'random') {
-                PLAYERS[current_round_weapons.length].weapon = 'paper'
-                current_round_weapons.push(button_info)
-            }
-            else {
-                PLAYERS[current_round_weapons.length].weapon = button_info
-                current_round_weapons.push(button_info)
-            }
-            if (current_round == rounds_amount) {
-                screenManager('next_round', 'hide')
-            }
-            if (current_round_weapons.length != PLAYERS.length) {
-                document.body.style.backgroundColor = PLAYERS[current_round_weapons.length].colour
             }
 
-            break;
+            PLAYERS[current_round_weapons.length].weapon = button_info
+            current_round_weapons.push(button_info)
 
-        case 'go':
-
-            for (let i = 0; i < PLAYERS.length; i++) {
-                for (let j = 0; j < PLAYERS.length; j++) {
-                    if (i != j) {
-                        PLAYERS[i].points += findWinner(PLAYERS[i].weapon, PLAYERS[j].weapon)
-                    }
-                }
-            }
-            screenManager('results_screen', 'show')
-            screenManager('go_screen', 'hide')
-            scoreboardUpdate()
-            showWinners()
-            break;
-
-        case 'replay':
-
-            while (PLAYERS.length > 0) { PLAYERS.shift() }
-            while (current_round_weapons.length > 0) { current_round_weapons.shift() }
-            rounds_amount = 0
-            current_round = 1
-            document.getElementById('player_name').innerText = 'Player 1'
-            screenManager('players_screen', 'show')
-            screenManager('results_screen', 'hide')
-            screenManager('next_round', 'show')
-            break;
-
-        case 'next_round':
-
-            if (rounds_amount <= current_round) { return }
-            current_round++
-            for (let i = 0; i < PLAYERS.length; i++) {
-                PLAYERS[i].weapon = ''
-            }
-            while (current_round_weapons.length > 0) { current_round_weapons.shift() }
-            screenManager('selection_screen', 'show')
-            screenManager('results_screen', 'hide')
-            document.getElementById('player_name').innerText = 'Player 1'
-            document.body.style.backgroundColor = PLAYERS[current_round_weapons.length].colour
+            if (current_round == rounds_amount) { screenShowHide('next_round', 'hide') }
+            if (current_round_weapons.length != PLAYERS.length) { document.body.style.backgroundColor = PLAYERS[current_round_weapons.length].colour }
             break;
     }
 }
@@ -144,23 +86,6 @@ function findWinner(player1, player2) {
     }
 }
 
-function scoreboardUpdate() {
-
-    for (let i = 0; i < PLAYERS.length; i++) {
-        SCOREBOARD[i] = PLAYERS[i].points
-    }
-}
-
-function screenManager(screen, action) {
-
-    if (action == 'hide') {
-        document.getElementById(screen).classList.replace('show', 'hide')
-    }
-    if (action == 'show') {
-        document.getElementById(screen).classList.replace('hide', 'show')
-    }
-}
-
 function showWinners() {
 
     let highest = Math.max(...SCOREBOARD)
@@ -180,17 +105,67 @@ function showWinners() {
     document.getElementById('winner_list').innerHTML = winner_list
 }
 
-function selectColor(n) {
-    switch (n) {
-        case 0: return
-        case 1: return 'rgb(255, 230, 0)'
-        case 2: return 'rgb(255, 77, 0)'
-        case 3: return 'rgb(245, 103, 181)'
-        case 4: return 'rgb(0, 236, 63)'
-        case 5: return 'rgb(11, 209, 173)'
-        case 6: return 'rgb(11, 100, 209)'
-        case 7: return 'rgb(236, 0, 110)'
-        case 8: return 'rgb(232, 44, 44)'
-        case 9: return 'rgb(126, 227, 48)'
+function scoreboardUpdate() {
+
+    for (let i = 0; i < PLAYERS.length; i++) {
+        SCOREBOARD[i] = PLAYERS[i].points
     }
+}
+
+function screenShowHide(screen, action) {
+    if (action == 'hide') { document.getElementById(screen).classList.replace('show', 'hide') }
+    if (action == 'show') { document.getElementById(screen).classList.replace('hide', 'show') }
+}
+
+function flipScreenVisibility(show, hide) {
+    screenShowHide(show, 'show')
+    screenShowHide(hide, 'hide')
+}
+
+function selectColor(player_number) {
+    return PLAYER_COLOURS[player_number - 1]
+}
+
+function randomPick() {
+    console.log('still have to code this')
+    btnClick('paper')
+}
+
+function replay() {
+
+    while (PLAYERS.length > 0) { PLAYERS.shift() }
+    while (current_round_weapons.length > 0) { current_round_weapons.shift() }
+    rounds_amount = 0
+    current_round = 1
+    document.getElementById('player_name').innerText = 'Player 1'
+    flipScreenVisibility('players_screen', 'results_screen')
+    screenShowHide('next_round', 'show')
+}
+
+function nextRound() {
+
+    if (rounds_amount <= current_round) { return }
+    current_round++
+    for (let i = 0; i < PLAYERS.length; i++) {
+        PLAYERS[i].weapon = ''
+    }
+    while (current_round_weapons.length > 0) { current_round_weapons.shift() }
+
+    flipScreenVisibility('selection_screen', 'results_screen')
+    document.getElementById('player_name').innerText = 'Player 1'
+    document.body.style.backgroundColor = PLAYERS[current_round_weapons.length].colour
+}
+
+function goBtn() {
+
+    for (let i = 0; i < PLAYERS.length; i++) {
+        for (let j = 0; j < PLAYERS.length; j++) {
+            if (i != j) {
+                PLAYERS[i].points += findWinner(PLAYERS[i].weapon, PLAYERS[j].weapon)
+            }
+        }
+    }
+    flipScreenVisibility('results_screen', 'go_screen')
+    scoreboardUpdate()
+    showWinners()
 }
