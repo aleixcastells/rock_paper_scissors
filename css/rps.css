@@ -1,184 +1,164 @@
-/* GENERAL STYLE */
-html {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
 body {
+  background-color: black !important;
+}
+
+/* SCREEN STYLE */
+
+.screen {
   position: relative;
+  display: block;
   width: 100%;
-  height: 100%;
-  /* background-color: black !important;
-
-  background-color: rgb(232, 44, 44) !important;*/
+  height: 100vh;
+  text-align: center;
 }
 
-.row {
-  --bs-gutter-x: 0 !important;
-}
-
-/* HIDE / SHOW FUNCTIONALITY */
-.show {
+.screen-visible {
   display: block;
 }
 
-.hide {
+.screen-hidden {
   display: none;
 }
 
-
-
-
-
-/* CLASSES */
-.container {
-  position: relative;
-  padding-top: 10vh !important;
-  font-family: 'Helvetica', sans-serif;
-  text-align: center;
-  width: 100% !important;
-  height: 100%;
-
-  color: white;
-
-}
-
-.header {
-  position: relative;
-  font-weight: 200;
-  font-size: 1.4em;
-}
-
-.clickable {
+#select_players_screen {
   background-color: transparent;
-  color: white;
 }
 
-@media(hover: hover) {
-  .clickable:hover {
-    background-color: white;
-    color: black;
+#select_rounds_screen {
+  background-color: transparent;
+}
 
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 36px;
-  }
+#select_weapon_screen {
+  background-color: transparent;
+}
+
+#go_screen {
+  background-color: transparent;
+}
+
+#results_screen {
+  background-color: transparent;
+
 }
 
 
-.btn_div {
-  padding: 20px 35px;
+/* BUTTON STYLE*/
 
-  font-size: 2em;
-  font-weight: bold;
-  letter-spacing: -.02em;
+.players_amount_button_container {
   display: inline-block;
-  max-width: 280px;
+  margin-top: 30vh;
+  height: 210px;
+  width: 210px;
 
-  background-color: transparent;
-  color: white;
+}
+
+.rounds_container {
+  display: inline-block;
+  margin-top: 30vh;
+  height: 200px;
+  width: 300px;
+  text-align: center;
+}
+
+.weapons_container {
+
+  display: inline-block;
+  margin-top: 25vh;
+  height: 300px;
+  max-width: 320px;
+  text-align: center;
+  font-size: 0 !important;
+
+
+}
+
+.weapons_container div {
+  display: inline-block;
+  height: 150px;
+  width: 150px;
 }
 
 
+.div-btn {
+  position: relative;
+  text-align: center;
+  padding: .3em;
+
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-size: 2em;
+  opacity: 1;
+
+}
+
 @media(hover: hover) {
-  .btn_div:hover {
-    background-color: white;
-    color: black;
+  .div-btn:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
   }
 }
 
-.selection_btn {
-  background-size: 6em;
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 18vh;
+.div-btn:active {
+  opacity: .7;
+  color: rgb(0, 0, 0);
+}
+
+.players_amount {
+  width: 70px;
+  height: 70px;
+  float: left;
+
+
+}
+
+.go_button {
+  display: inline-block;
+  margin-top: 35vh;
+  max-width: 320px;
+  text-align: center;
+}
+
+.players_amount span {
   width: 100%;
 }
 
-.go_screen {
-  padding-top: 30vh;
+.next_round_button {
+  width: 100%;
 }
 
-.winner_names {
-  font-size: 3em;
-  font-weight: bold;
+.select_weapon {
+  background-size: cover;
+  background-position: center center;
 }
 
-/* IMG BACKGROUNDS */
 .rock {
   background-image: url(../img/rock.png);
+  background-color: transparent;
+}
 
+.paper {
+  background-image: url(../img/paper.png);
+  background-color: transparent;
+}
+
+.scissors {
+  background-image: url(../img/scissors.png);
+  background-color: transparent;
 }
 
 @media(hover: hover) {
   .rock:hover {
     background-image: url(../img/rock_t.png);
     background-color: transparent;
-
   }
 
-}
-
-
-.paper {
-  background-image: url(../img/paper.png);
-}
-
-@media(hover: hover) {
   .paper:hover {
     background-image: url(../img/paper_t.png);
-    background-color: transparent;
-
+    background-color: transparent !important;
   }
 
-}
-
-.scissors {
-  background-image: url(../img/scissors.png);
-}
-
-@media(hover: hover) {
   .scissors:hover {
     background-image: url(../img/scissors_t.png);
     background-color: transparent;
   }
-}
-
-
-.player1 {
-  color: rgb(255, 230, 0);
-}
-
-.player2 {
-  color: rgb(255, 77, 0);
-}
-
-.player3 {
-  color: rgb(245, 103, 181);
-}
-
-.player4 {
-  color: rgb(0, 236, 63);
-}
-
-.player5 {
-  color: rgb(11, 209, 173);
-}
-
-.player6 {
-  color: rgb(11, 100, 209);
-}
-
-.player7 {
-  color: rgb(236, 0, 110);
-}
-
-.player8 {
-  color: rgb(232, 44, 44);
-}
-
-.player9 {
-  color: rgb(126, 227, 48);
 }
