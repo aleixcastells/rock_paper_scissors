@@ -30,6 +30,7 @@ body {
 
 #select_weapon_screen {
   background-color: transparent;
+  padding-top: 15vh;
 }
 
 #go_screen {
@@ -38,9 +39,7 @@ body {
 
 #results_screen {
   background-color: transparent;
-
 }
-
 
 /* BUTTON STYLE*/
 
@@ -49,7 +48,6 @@ body {
   margin-top: 30vh;
   height: 210px;
   width: 210px;
-
 }
 
 .rounds_container {
@@ -63,19 +61,25 @@ body {
 .weapons_container {
 
   display: inline-block;
-  margin-top: 25vh;
   height: 300px;
   max-width: 320px;
   text-align: center;
   font-size: 0 !important;
-
-
 }
 
 .weapons_container div {
   display: inline-block;
   height: 150px;
   width: 150px;
+}
+
+.results_container {
+
+  display: inline-block;
+  margin-top: 10vh;
+  height: 600px;
+  max-width: 320px;
+  text-align: center;
 }
 
 
@@ -107,8 +111,6 @@ body {
   width: 70px;
   height: 70px;
   float: left;
-
-
 }
 
 .go_button {
@@ -161,4 +163,15 @@ body {
     background-image: url(../img/scissors_t.png);
     background-color: transparent;
   }
+}
+
+/* TEXT STYLE */
+
+.winner {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.header {
+  font-size: 1em !important;
 }

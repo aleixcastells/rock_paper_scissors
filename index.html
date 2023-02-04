@@ -24,6 +24,8 @@
         <div id="select_players_screen" class="screen screen-visible">
 
             <div class="players_amount_button_container">
+                <span class="header">Player Amount</span><br><br>
+
                 <div class="div-btn players_amount" onclick="screenManager('players_amount',1)"> <span>1</span> </div>
                 <div class="div-btn players_amount" onclick="screenManager('players_amount',2)"> <span>2</span> </div>
                 <div class="div-btn players_amount" onclick="screenManager('players_amount',3)"> <span>3</span> </div>
@@ -39,37 +41,51 @@
 
         <div id="select_rounds_screen" class="screen screen-hidden">
             <div class="rounds_container">
+                <span class="header">Rounds</span><br><br>
+
                 <div class="div-btn rounds_amount" onclick="screenManager('rounds_amount',1)"> <span>One Round</span> </div>
                 <div class="div-btn rounds_amount" onclick="screenManager('rounds_amount',3)"> <span>Three Rounds</span> </div>
                 <div class="div-btn rounds_amount" onclick="screenManager('rounds_amount',5)"> <span>Five Rounds</span> </div>
             </div>
         </div>
 
-
         <div id="select_weapon_screen" class="screen screen-hidden">
+            <span class="header">Pick your weapon</span><br>
+            <span class="header">(Discretely)</span><br><br>
+            <strong><span id="player_name" class="header"></span></strong><br><br>
             <div class="weapons_container">
+
+
+
                 <div class="div-btn select_weapon rock" onclick="screenManager('select_weapon','rock')"> <span></span> </div>
                 <div class="div-btn select_weapon paper" onclick="screenManager('select_weapon','paper')"> <span></span> </div>
                 <div class="div-btn select_weapon scissors" onclick="screenManager('select_weapon','scissors')"> <span></span></div>
                 <div class="div-btn select_weapon random" onclick="randomWeapon()"> <span></span> </div>
             </div>
 
-
         </div>
-        <div id="go_screen" class="screen screen-hidden">
+        <div id="go_screen" class="screen screen-hidden"><br><br>
             <div class="div-btn go_button" onclick="goBtn()"> <span>GO</span> </div>
         </div>
 
         <div id="results_screen" class="screen screen-hidden">
 
-            <div class="winner-div">
-                <span class="header">Winners</span><br>
-                <div id="winner-names"></div><br>
-                <span class="header">Scoreboard</span><br>
-                <span id="scoreboard"></span>
+            <div class="results_container">
+
+
+                <div class="winner-div">
+                    <span class="header">Winners</span><br>
+                    <div id="winner-names"></div><br>
+                    <span class="header">Scoreboard</span><br><br>
+                    <span id="scoreboard"></span>
+                </div>
+                <br><br>
+
+                <div id="next_round_id" class="div-btn next_round_button screen-visible" onclick="nextRound('next_round')"> <span>Next Round</span>
+                </div>
+                <div class="div-btn replay_button" onclick="replay()"> <span>Replay</span> </div>
+                <br><br>
             </div>
-            <div id="next_round_id" class="div-btn next_round_button screen-visible" onclick="nextRound()"> <span>Next Round</span> </div>
-            <div class="div-btn replay_button" onclick="replay()"> <span>Replay</span> </div>
 
         </div>
     </div>
