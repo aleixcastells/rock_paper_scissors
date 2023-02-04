@@ -19,71 +19,46 @@ class Player {
 }
 
 function showScreen(screen_name = 'select_players_screen') {
-
     const VISIBLE_SCREEN = document.getElementsByClassName('screen-visible')
     VISIBLE_SCREEN[0].classList.replace('screen-visible', 'screen-hidden')
-
     document.getElementById(screen_name).classList.replace('screen-hidden', 'screen-visible')
 }
 
 function screenManager(button, number) {
-
-    console.log(number)
-
     switch (button) {
 
-
-
         case 'players_amount':
-
-            if (number == 1) {
-                createPlayers(2)
-                GAME.cpu_player = true
-
-            }
-
+            if (number == 1) { createPlayers(2); GAME.cpu_player }
             if (number > 1) { createPlayers(number) }
-
             showScreen('select_rounds_screen')
             break
 
         case 'rounds_amount':
-
             GAME.total_rounds = number
             showScreen('select_weapon_screen')
             break;
 
         case 'select_weapon':
-
-            if (GAME.players.length == 2 && GAME.cpu_player == true) {
+            if (GAME.players.length == 2 && GAME.cpu_player) {
                 selectWeapon(number)
                 randomWeapon()
                 GAME.players[1].player_name = 'CPU'
-
             }
-            if (GAME.cpu_player == false) {
-                selectWeapon(number)
-            }
-
+            if (GAME.cpu_player == false) { selectWeapon(number) }
             if (GAME.selected_weapons == GAME.players.length) { showScreen('go_screen') }
-
             break;
     }
-
     setPlayerName(button)
 }
 
 function nextRound() {
-
     screenManager('next_round', 0)
-
     GAME.current_round += 1
     GAME.selected_weapons = 0
-    GAME.players.forEach(function (player) {
-        player.weapon = ''
-    })
+    GAME.players.forEach(function (player) { player.weapon = '' })
     showScreen('select_weapon_screen')
 }
+
 function replay() {
     GAME.players = []
     GAME.scoreboard = []
@@ -105,14 +80,12 @@ function createPlayers(player_amount) {
 }
 
 function selectWeapon(clicked_weapon) {
-
     GAME.players[GAME.selected_weapons].weapon = clicked_weapon
     GAME.selected_weapons++
 }
 
 function goBtn() {
     GAME.selected_weapons = 0
-
     calculateWinner()
     showScreen('results_screen')
     if (hideNextRound()) {
@@ -122,30 +95,28 @@ function goBtn() {
 }
 
 function calculateWinner() {
-
     GAME.players.forEach(function (player) {
         for (let i = 0; i < GAME.players.length; i++) {
-
             switch (player.weapon) {
+
                 case 'rock':
                     player.points[1] += addPoints(i, player, 'scissors')
                     break;
+
                 case 'paper':
                     player.points[1] += addPoints(i, player, 'rock')
                     break;
+
                 case 'scissors':
                     player.points[1] += addPoints(i, player, 'paper')
                     break;
             }
         }
-
         GAME.scoreboard[player.number - 1] = player.points[1]
-
     })
 }
 
 function addPoints(i, player, loosing_weapon) {
-
     if (GAME.players.length <= 3) {
         if (GAME.players[i].weapon == loosing_weapon && player.points[0] != GAME.current_round) {
             player.points[0] = GAME.current_round
@@ -166,14 +137,12 @@ function showWinner() {
     let scoreboard_string = ''
     let winners_string = ''
     let highest = Math.max(...GAME.scoreboard)
-
     GAME.players.forEach(function (player) {
         scoreboard_string += `${player.player_name}: (${player.points[1]}) ${player.weapon} <br>`
         if (player.points[1] == highest) {
             winners_string += `<span id=\"winner${player.number}" class="winner" style="color: ${player.colour}">${player.player_name}</span><br>`
         }
     })
-
     document.getElementById('winner-names').innerHTML = winners_string
     document.getElementById('scoreboard').innerHTML = scoreboard_string
 }
@@ -184,45 +153,30 @@ function hideNextRound() {
 }
 
 function setPlayerName(button) {
-
     if (GAME.selected_weapons == GAME.players.length) {
         document.body.style.setProperty('background-color', 'black', 'important')
         return
     }
-
     if (button == 'rounds_amount' || button == 'next_round') {
-
         let player_colour = `${GAME.players[GAME.selected_weapons].colour}`
         document.body.style.setProperty('background-color', player_colour, 'important')
-
         document.getElementById('player_name').innerHTML = GAME.players[GAME.selected_weapons].player_name
     }
-
     if (button == 'select_weapon') {
-
         let player_colour = `${GAME.players[GAME.selected_weapons].colour}`
         document.body.style.setProperty('background-color', player_colour, 'important')
-
         document.getElementById('player_name').innerHTML = GAME.players[GAME.selected_weapons].player_name
-
-
     }
 }
 
 function randomWeapon() {
-
     let random_number = Math.ceil(Math.random() * 3)
     console.log(random_number)
     let button = random_number == 1 ? 'rock' : random_number == 2 ? 'paper' : 'scissors'
-
     selectWeapon(button)
     setPlayerName('select_weapon')
-
     if (GAME.selected_weapons == GAME.players.length) { showScreen('go_screen') }
 }
-
-
-
 
 /*
 

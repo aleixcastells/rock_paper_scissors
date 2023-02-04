@@ -148,6 +148,11 @@ body {
   background-color: transparent;
 }
 
+.random {
+  background-image: url(../img/random.png);
+  background-color: transparent;
+}
+
 @media(hover: hover) {
   .rock:hover {
     background-image: url(../img/rock_t.png);
@@ -161,6 +166,11 @@ body {
 
   .scissors:hover {
     background-image: url(../img/scissors_t.png);
+    background-color: transparent;
+  }
+
+  .random:hover {
+    background-image: url(../img/random_t.png);
     background-color: transparent;
   }
 }
